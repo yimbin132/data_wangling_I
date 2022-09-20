@@ -6,6 +6,8 @@ output: github_document
 
 ```{r, echo=FALSE}
 library(tidyverse)
+library(readxl)
+library(haven)
 ```
 
 ##Data Imports: CSVs 
@@ -29,4 +31,37 @@ Look at the data
 ```{r}
 litters_df
 ```
-##Other save file
+##Other file formats
+
+we need to read in an excel file
+
+```{r}
+mlb_df = read_excel("Data/data/mlb11.xlsx")
+```
+
+```{r, eval =FALSE}
+view(mlb_df)
+```
+```{r}
+lotr_words_df = 
+    read_excel(
+      "Data/data/LotR_Words.xlsx",
+      range = "B3:D6"
+    )
+```
+Read in a SAS dataset. 
+
+```{r}
+pulse_df = read_sas("Data/data/public_pulse_data.sas7bdat")
+```
+## Data export
+
+```{r}
+write_csv(lotr_words_df)
+```
+## why not base r??
+
+```{r}
+dont_do_this_df = read.csv("Data/data/FAS_litters.csv") 
+```
+
