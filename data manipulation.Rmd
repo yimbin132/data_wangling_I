@@ -48,6 +48,12 @@ filter(litters_data, gd0_weight >=22, gd_of_birth ==20)
 ```{r}
 filter(litters_data, group %in% c("Con7","Mod8"))
 ```
+```{r}
+mutate(
+  litters_data, 
+  wt_gain =gd18_weight - gd0_weight,
+  group = str_to_lower(group))
+```
 
 
 
