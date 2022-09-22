@@ -1,0 +1,77 @@
+---
+title: "data manipulation"
+output: git_document
+date: "2022-09-22"
+---
+```{r}
+library(tidyverse)
+```
+
+
+
+```{r}
+litters_data= read_csv("Data/data/FAS_litters.csv")
+litters_data= janitor:: clean_names(litters_data)
+view(litters_data)
+```
+## 'select'
+
+Choose some columns and not others
+
+```{r}
+select(litters_data, group, gd0_weight)
+
+```
+
+```{r}
+select(litters_data, group, gd0_weight:gd_of_birth)
+```
+
+```{r}
+select(litters_data, -pups_survive)
+```
+Renaming columns...
+
+```{r}
+rename(litters_data, GROUP=group...)
+```
+```{r}
+select(litters_data, starts_with("gd"))
+select(litters_data, ends_with("weight"))
+```
+```{r}
+select(litters_data, litter_number, pups_survive, everyhing())
+```
+```{r}
+filter(litters_data, gd0_weight >=22, gd_of_birth ==20)
+```
+```{r}
+filter(litters_data, group %in% c("Con7","Mod8"))
+```
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
